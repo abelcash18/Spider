@@ -8,7 +8,7 @@
   let spiderY = mouseY;
 
   // Customize this: lower = smoother/slower, higher = snappier/faster.
-  const followSpeed = 0.16;
+  const followSpeed = 0.12;
 
   window.addEventListener('mousemove', (event) => {
     mouseX = event.clientX;
