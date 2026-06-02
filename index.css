@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.holder {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px 50px;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.1), inset 0 0 40px rgba(0, 255, 204, 0.05);
+    min-width: 350px;
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.inputBox {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.inputBox input:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.4), inset 0 0 10px rgba(0, 255, 204, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.inputBox input::placeholder {
+    color: transparent;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.inputBox input:focus ~ span,
+.inputBox input:valid ~ span {
+    top: -10px;
+    font-size: 0.85rem;
+    color: #00ffcc;
+}
+
+.toggle-password {
+    position: absolute !important;
+    right: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    top: 15px !important;
+    color: #00ffcc !important;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.links a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.links a:hover {
+    text-decoration: underline;
+    color: #00aaff;
+}
+
+.btn-login, .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    border: none;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.btn-login:hover, .btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.4);
+}
+
+.btn-login:active, .btn-submit:active {
+    transform: translateY(-1px);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    animation: slideDown 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #00ffcc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #00aaff;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.password-strength {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.password-strength.weak {
+    background: linear-gradient(90deg, #ff4444, #ff4444);
+}
+
+.password-strength.medium {
+    background: linear-gradient(90deg, #ffaa00, #ffaa00);
+}
+
+.password-strength.strong {
+    background: linear-gradient(90deg, #00ff44, #00ff44);
+}
+
+.info-text {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 15px 0;
+    text-align: center;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #00ffcc, #00aaff);
+    color: black;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 10000;
+    transition: bottom 0.3s ease;
+}
+
+.toast.show {
+    bottom: 30px;
+}
+
+.toast.error {
+    background: linear-gradient(90deg, #ff4444, #ff2222);
+    color: white;
+}
+
+.toast.success {
+    background: linear-gradient(90deg, #00ff44, #00cc00);
+    color: black;
+}
+
+/* Spider Cursor */
+.spider-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 2rem;
+    transition: transform 0.1s ease;
+}
+
+/* Loading State */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Profile Box */
+.profile-box {
+    min-width: 350px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.btn-logout {
+    background: linear-gradient(90deg, #ff6b6b, #ee5a6f);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.profile-details {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 204, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item label {
+    display: block;
+    font-size: 0.85rem;
+    color: #00ffcc;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.detail-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #fff;
+    padding: 8px 12px;
+    background: rgba(0, 255, 204, 0.1);
+    border-radius: 6px;
+}
+
+.btn-delete {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff4444, #cc0000);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 68, 68, 0.3);
+}
+
+.btn-delete:active {
+    transform: translateY(0);
+}
