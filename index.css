@@ -66,6 +66,26 @@
     10px 12px 0 0 #00ffcc;
 }
 
+ .cute-footer{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+ }
+ .cute-footer p{
+    margin: 0;
+    color: #ececec;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 1px;
+ } 
+
+
 .spider-cursor .leg {
   position: absolute;
   left: 50%;
